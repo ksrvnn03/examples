@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<a href='#' class='next'>next</a>
+<a href='#' class='previous'>prev</a>
+
+<div class="large_view">
+  <img />
+  
+</div>
+
+<script type="text/javascript">
+        var index = 0;
+
+var images = [
+  'http://placehold.it/300&text=first+picture',
+  'http://placehold.it/300&text=second+picture',
+  'http://placehold.it/300&text=third+picture'
+];
+
+var previousIndex = function(index, length) {
+  if (index <= 0) {
+    return length - 1; // cycle backwards to the last image
+  } else {
+    return index - 1;
+  }
+}
+
+var nextIndex = function(index, length) {
+  return ((index + 1) % length)
+};
+
+$('.next').click(function() {
+  index = nextIndex(index, images.length);
+  $('.large_view img').attr('src', images[index]);
+});
+
+$('.previous').click(function() {
+  index = previousIndex(index, images.length);
+  $('.large_view img').attr('src', images[index]);
+});
+
+/** initialize the image on load to the first one */
+$('.large_view img').attr('src', images[index])
+</script>
+</body>
+</html>
